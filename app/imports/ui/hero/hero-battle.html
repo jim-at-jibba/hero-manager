@@ -1,0 +1,38 @@
+<template name="hero-battle">
+  <div class="x-component-container roster-battle-block">
+    <div class="roster-block-class-image-preview {{classImageStyle}}">
+    {{#if classImage}}
+      <img src="{{classImage}}">
+    {{/if}}
+    </div>
+
+    <div class="roster-block-name">{{name}}</div>
+    <div class="roster-block-level">
+      <strong><span class="stat-label">Lvl.</span> <span class="stat-value">{{level}}</span></strong>
+      <span class="hidden">({{exp}}/{{expThisLevel}})</span>
+    </div>
+    <div class="roster-block-classes">
+    {{#each getClass (this)}}
+      <span class="label txt-shdw class-token class-{{toLower this}}"></span>
+    {{/each}}
+    </div>
+    <div class="roster-block-health">
+      <div class="health-values">{{health}}/{{maxHealth}}</div>
+      <div class="health-bar">
+        {{>[x-component-progress] current=health max=maxHealth}}
+      </div>
+    </div>
+    {{> UI.contentBlock}}
+
+    {{#if isDead}}
+      <span class="roster-block-dead-notice h4">Dead</span>
+    {{/if}}
+
+    {{#if unavailable}}
+      <div class="hero-unavailable">
+        <span class="h3">{{availableReason}}</span><br>
+        <span>Returns to work {{timeTillAvailable}}</span>
+      </div>
+    {{/if}}
+  </div>
+</template>

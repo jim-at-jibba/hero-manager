@@ -1,0 +1,52 @@
+<template name='hire/overview'>
+  <div class="clearfix" style="padding-top: 10px; padding-bottom: 10px">
+    <button class="back btn btn-default pull-right">Back</button>
+  </div>
+
+  <div class="hire-overview">
+    {{>[x-component-header] text="The Dead Dog Tavern"}}
+
+    <div class="x-component-panel">
+      <blockquote><em>The inn is a three-storey stone walled-building on the outskirts of town. It's been half rebuilt a number of times, giving the structure a hodge-podge, patchwork look. The premises are frequented by the kind of people you might want to hire - swashbucklers, rogues, lowlifes and thugs: those desperate for gold and adventure.</em></blockquote>
+      <p>Review and hire prospective employees. You can pay money to look for new potential employees or wait for them to apply.<br>
+      Completing difficult quests will mean more people apply to work for you.</p>
+
+      {{#if selling}}
+        {{>[market/sell]}}
+      {{else}}
+        <button class="btn btn-default buy-booster">Add 3 prospects for {{boosterCost}}g</button>
+        <button class="btn btn-default sell">Sell a hero</button>
+
+        <div class="roster-overview">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="x-component-container" style="margin-bottom: 15px">
+                <input value="{{searchVal}}" style="width: 100%; color: black" type="text" placeholder="Search" id="roster-search">
+              </div>
+              <div class="listings-wrapper">
+                {{#each search listings}}
+                  {{#unless temporary}}
+                    {{#[hero-preview]}}
+                      <span class="hero-hire-price"><strong>{{salePrice}}g</strong></span>
+                    {{/[hero-preview]}}
+                  {{/unless}}
+                {{/each}}
+              </div>
+            </div>
+            <div class="col-md-8">
+              {{#if mercDetail}}
+              {{#with mercDetail}}
+                {{#[hero-detail]}}
+                  <button class="hire btn btn-default"><strong>Hire: {{salePrice}}g</strong></button>
+                  <button class="remove btn btn-default">Remove from hire list</button>
+                  <button class="close-modal visible-xs btn btn-default">Close window</button>
+                {{/[hero-detail]}}
+              {{/with}}
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</template>

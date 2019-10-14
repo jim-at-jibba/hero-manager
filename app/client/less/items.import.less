@@ -1,0 +1,62 @@
+.item-thumb-wrapper {
+  padding: 5px;
+  float: left;
+  position: relative;
+
+  .item-quantity {
+    position: absolute;
+    bottom: 3px;
+    right: 7px;
+  }
+}
+
+.item-thumb {
+  height: 50px;
+  width: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  &.item-quality-1 { border-color: #9d9d9d !important; } /* poor (gray) */
+  &.item-quality-2 { border-color: #ffffff !important; } /* common (white) */
+  &.item-quality-3 { border-color: #1eff00 !important; } /* uncommon (green) */
+  &.item-quality-4 { border-color: #0081ff !important; } /* #0070dd rare (blue) */
+  &.item-quality-5 { border-color: #c600ff !important; } /* #a335ee epic (purple) */
+  &.item-quality-6 { border-color: #ff8000 !important; } /* lengendary (orange) */
+  &.item-quality-7 { border-color: #e5cc80 !important; } /* artifact (gold) */
+  &.item-quality-8 { border-color: #e5cc80 !important; } /* heirloom (gold) */
+}
+
+.item-quality-text-1 { color: #9d9d9d !important; } /* poor (gray) */
+.item-quality-text-2 { color: #ffffff !important; } /* common (white) */
+.item-quality-text-3 { color: #1eff00 !important; } /* uncommon (green) */
+.item-quality-text-4 { color: #0081ff !important; } /* #0070dd rare (blue) */
+.item-quality-text-5 { color: #c600ff !important; } /* #a335ee epic (purple) */
+.item-quality-text-6 { color: #ff8000 !important; } /* lengendary (orange) */
+.item-quality-text-7 { color: #e5cc80 !important; } /* artifact (gold) */
+.item-quality-text-8 { color: #e5cc80 !important; } /* heirloom (gold) */
+
+.item-card {
+  ul {
+    padding-left: 15px;
+    list-style-type: square;
+  }
+}
+
+.item-thumb-placeholder {
+  height: 50px;
+  width: 50px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+#inventory-sell {
+  margin-top: 20px;
+  padding: 30px;
+}

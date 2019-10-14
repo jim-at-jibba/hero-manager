@@ -1,0 +1,72 @@
+<template name='roster/overview'>
+  <div class="roster-overview">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="x-component-container roster-search" style="margin-bottom: 15px">
+
+          <input value="{{searchVal}}" style="width: 100%; color: black" type="text" placeholder="Search" id="roster-search">
+        </div>
+        {{#if mercDetail}}
+
+          <div class="clearfix">
+
+            <button class="show-heroes visible-xs btn btn-default">Show heroes<span class="caret"></span></button>
+          <div class="roster-hero-tab-column">
+          {{#each search roster}}
+            {{#unless temporary}}
+              {{>[hero-tab]}}
+            {{/unless}}
+          {{/each}}
+          </div>
+
+          <div class="roster-hero-detail-column">
+          {{#with mercDetail}}
+            {{#[hero-detail]}}
+              {{#if activeQuest}}
+                  Out adventuring.
+              {{else}}
+                {{#if noHealth health}}
+                <button class="revive btn btn-default btn-danger" data-toggle="tooltip" title="Revive this hero for {{reviveCost}}g">
+                  <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+                  <span class="sr-only">revive ({{reviveCost}}g)</span>
+                </button>
+                {{/if}}
+                {{#if alive}}
+                  {{#if needsHeal}}
+                  <button class="heal btn btn-default" data-toggle="tooltip" title="Heal this hero for {{healCost}}g">
+                    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                    <span class="sr-only">heal ({{healCost}}g)</span>
+                  </button>
+                  {{/if}}
+                {{/if}}
+                <button class="fire btn btn-default" data-toggle="tooltip" title="Fire this hero">
+                  <span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
+                  <span class="sr-only">Fire</span>
+                </button>
+
+                <button class="close-detail btn btn-default" data-toggle="tooltip" title="Close this detail overview">
+                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                  <span class="sr-only">Close</span>
+                </button>
+              {{/if}}
+            {{/[hero-detail]}}
+          {{/with}}
+          </div>
+          </div>
+
+        {{else}}
+
+        {{#each search roster}}
+          {{#unless temporary}}
+            {{>[hero-preview]}}
+          {{/unless}}
+        {{/each}}
+
+        {{/if}}
+      </div>
+      <div class="col-xs-6">
+        {{> [inventory/overview]}}
+      </div>
+    </div>
+  </div>
+</template>

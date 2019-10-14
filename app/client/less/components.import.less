@@ -1,0 +1,218 @@
+.icon-btn {
+  background: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  padding: 0;
+  color: black;
+
+  &:hover {
+    border: 2px solid black;
+  }
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+.x-component-header {
+  position: relative;
+  height: 67px;
+
+  .left,
+  .right {
+    position: absolute;
+    height: 67px;
+    width: 82px;
+    top: 0;
+  }
+
+  .center {
+    background-image: url(/ui/header/center.png);
+    left: 20px;
+    right: 20px;
+    height: 67px;
+    position: absolute;
+  }
+
+  .left {
+    background-image: url(/ui/header/left.png);
+    left: 0;
+    z-index: 1;
+  }
+
+  .right {
+    background-image: url(/ui/header/right.png);
+    right: 0;
+    z-index: 1;
+  }
+
+  .text {
+    margin: 0;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 22px;
+    z-index: 2;
+  }
+}
+
+.x-component-panel {
+  min-height: 20px;
+  padding: 25px;
+  background-image: url(/ui/panel/left.png), url(/ui/panel/right.png);
+  background-repeat: repeat-y, repeat-y;
+  background-position: left, right;
+  background-color: @bg-green;
+  margin: 0 2px;
+  position: relative;
+  color: white;
+
+  &:after {
+    content: '';
+    background-image: url(/ui/panel/bottom-left.png), url(/ui/panel/bottom-right.png);
+    background-repeat: no-repeat, no-repeat;
+    background-position: bottom left, bottom right;
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+    height: 15px;
+  }
+
+  &:before {
+    content: '';
+    background-image: url(/ui/panel/bottom.png);
+    background-repeat: repeat-x;
+    background-position: bottom;
+    background-color: @bg-green;
+    position: absolute;
+    bottom: -15px;
+    left: 15px;
+    right: 15px;
+    height: 15px;
+  }
+}
+
+.x-component-container {
+  position: relative;
+  padding: 10px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: -2px;
+    background-image: url(/ui/container/top-left.png),
+                      url(/ui/container/top-right.png),
+                      url(/ui/container/bottom-left.png),
+                      url(/ui/container/bottom-right.png);
+    background-position: top left, top right, bottom left, bottom right;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+    pointer-events: none;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: -2px;
+    background-image: url(/ui/container/top.png),
+                      url(/ui/container/bottom.png),
+                      url(/ui/container/right.png),
+                      url(/ui/container/left.png);
+    background-position: top, bottom, right, left;
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    border-radius: 10px;
+    pointer-events: none;
+  }
+}
+
+.x-component-progress {
+  padding-bottom: 8px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-top: 6px;
+
+  .x-component-progress-bar {
+    position: relative;
+    height: 15px;
+    width: 0;
+    font-size: 12px;
+    line-height: 20px;
+    color: #fff;
+    text-align: center;
+    -webkit-transition: width .6s ease;
+    -o-transition: width .6s ease;
+    transition: width .6s ease;
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: -2px;
+      background-image: url(/ui/progress/green-center.jpg);
+      background-repeat: repeat-x;
+      pointer-events: none;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 2px;
+      bottom: 0;
+      background-image: url(/ui/progress/green-left.jpg),
+                        url(/ui/progress/green-right.jpg);
+      background-position: left, right;
+      background-repeat: no-repeat, no-repeat;
+      pointer-events: none;
+    }
+
+    &.x-component-progress-bar-orange {
+      &:before {
+        background-image: url(/ui/progress/orange-center.jpg);
+      }
+      &:after {
+        background-image: url(/ui/progress/orange-left.jpg),
+                          url(/ui/progress/orange-right.jpg);
+      }
+    }
+
+    &.x-component-progress-bar-red {
+      &:before {
+        background-image: url(/ui/progress/red-center.jpg);
+      }
+      &:after {
+        background-image: url(/ui/progress/red-left.jpg),
+                          url(/ui/progress/red-right.jpg);
+      }
+    }
+
+    &.x-component-progress-bar-blue {
+      &:before {
+        background-image: url(/ui/progress/blue-center.jpg);
+      }
+      &:after {
+        background-image: url(/ui/progress/blue-left.jpg),
+                          url(/ui/progress/blue-right.jpg);
+      }
+    }
+  }
+}

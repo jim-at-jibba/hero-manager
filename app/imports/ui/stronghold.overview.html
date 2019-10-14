@@ -1,0 +1,24 @@
+<template name='stronghold/overview'>
+  <div class="clearfix" style="padding-top: 10px; padding-bottom: 10px">
+    <button class="back btn btn-default pull-right">Back</button>
+  </div>
+
+  {{#with stronghold}}
+    <div class="stronghold-overview">
+      {{>[x-component-header] text=strongholdName}}
+
+      <div class="x-component-panel">
+        {{{strongholdDescription}}}
+
+        <p>Your stronghold can hold a maximum of <strong>{{strongholdCapacity}}</strong> heroes.</p>
+        {{#if strongholdNext}}
+          <button class="upgrade-stronghold btn btn-default">
+            Upgrade to {{strongholdName (strongholdNext id)}}: {{strongholdCost (strongholdNext id)}}g
+          </button>
+        {{/if}}
+
+        {{> [roster/overview]}}
+      </div>
+    </div>
+  {{/with}}
+</template>

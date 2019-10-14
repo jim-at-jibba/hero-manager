@@ -1,0 +1,30 @@
+<template name='leaderboard/overview'>
+  <div class="clearfix" style="padding-top: 10px; padding-bottom: 10px">
+    <button class="back btn btn-default pull-right">Back</button>
+  </div>
+
+  {{>[x-component-header] text="Leaderboard"}}
+
+  <div class="x-component-panel">
+    <table class="table leaderboard-overview">
+      <thead>
+        <tr>
+        <th>Name</th>
+        <th>Rank</th>
+        <th>Income</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each leaderboard}}
+        <tr style="{{userColor}}">
+            <td>{{name}}</td>
+            <td>
+              {{rank}}
+            </td>
+            <td>{{income}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</template>

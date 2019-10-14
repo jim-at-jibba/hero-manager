@@ -1,0 +1,40 @@
+.quest-battle {
+  background-image: url(/world/battles/tower-bg.png);
+  background-position: center;
+  background-size: cover;
+  padding: 15px;
+
+  &.zone-swamp {
+    background-image: url(/world/battles/swamp-1.gif);
+  }
+
+  &.zone-forest {
+    background-image: url(/world/battles/forest-2.gif);
+  }
+
+  &.zone-mountain {
+    background-image: url(/world/battles/mountain-1.gif);
+  }
+
+  .quest-title {
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
+
+  .progress-bar {
+    margin-bottom: 30px;
+  }
+
+  .battle-wrapper {
+    transform: translateX(0);
+    transition: 250ms all ease-in-out;
+
+    &.battle-active {
+      transform: translateX(30px);
+
+      &.monster-wrapper {
+        transform: translateX(-30px);
+      }
+    }
+  }
+}

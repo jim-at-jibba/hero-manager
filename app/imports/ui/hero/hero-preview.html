@@ -1,0 +1,37 @@
+<template name="hero-preview">
+  <div class="x-component-container roster-block">
+    <div class="roster-block-class-image-preview {{classImageStyle}}">
+    {{#if classImage}}
+      <img src="{{classImage}}">
+    {{/if}}
+    </div>
+
+    <div class="roster-block-name">{{name}}</div>
+    <div class="roster-block-level">
+      <strong><span class="stat-label">Lvl.</span> <span class="stat-value">{{level}}</span></strong>
+      <span class="hidden">({{exp}}/{{expThisLevel}})</span>
+    </div>
+    <div class="roster-block-classes">
+    {{#each getClass (this)}}
+      <span class="label txt-shdw class-token class-{{toLower this}}"></span>
+    {{/each}}
+    </div>
+
+    {{#if isDead}}
+      <span class="roster-block-dead-notice h4">Dead</span>
+    {{/if}}
+
+    {{#if activeQuest}}
+      <span class="roster-block-quest-notice h4">On Quest</span>
+    {{/if}}
+
+    {{#if unavailable}}
+      <div class="hero-unavailable">
+        <span class="h4">{{availableReason}}</span><br>
+        <span>Returns to work {{timeTillAvailable}}</span>
+      </div>
+    {{/if}}
+
+    {{> UI.contentBlock}}
+  </div>
+</template>

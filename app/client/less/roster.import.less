@@ -1,0 +1,283 @@
+// Roster
+
+.roster-overview {
+  padding-top: 30px;
+}
+
+@media(max-width: 768px) {
+  .roster-search {
+    display: none;
+  }
+}
+
+.roster-block {
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.05);
+  margin-bottom: 15px;
+  position: relative;
+  font-weight: bold;
+  height: 65px;
+  overflow: hidden;
+  max-width: 500px;
+  color: white;
+
+  .stat-label {
+    display: inline-block;
+    width: 35px;
+  }
+
+  &.battle-active {
+    border-color: green;
+    border-width: 2px;
+  }
+
+  &:hover {
+    background: rgba(0,0,0,0.4);
+  }
+
+  &.hero-tab {
+    width: 100%;
+    margin-bottom: -7px;
+  }
+}
+
+.roster-block-name {
+  position: absolute;
+  left: 110px;
+  top: 8px;
+  font-size: 18px;
+  margin: 0;
+  font-family: @title-font;
+}
+
+.roster-block-level {
+  position: absolute;
+  left: 110px;
+  top: 35px;
+  margin: 0;
+}
+
+.roster-block-power {
+  position: absolute;
+  left: 175px;
+  top: 55px;
+  margin: 0;
+}
+.roster-block-speed {
+  position: absolute;
+  left: 175px;
+  top: 75px;
+  margin: 0;
+}
+
+.roster-block-classes {
+  position: absolute;
+  right: 15px;
+  top: 11px;
+  margin: 0;
+}
+
+.roster-block-health {
+  position: absolute;
+  left: 265px;
+  top: 35px;
+  right: 0;
+
+  .health-label {
+    top: 0;
+    position: absolute;
+  }
+
+  .health-values {
+    font-weight: bold;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .health-bar {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 26px;
+    height: 4px;
+    position: absolute;
+    top: 22px;
+  }
+
+  .progress-bar {
+    float: none;
+  }
+}
+
+.roster-health {
+  padding-top: 5px;
+  height: 20px;
+  width: 100px;
+  float: left;
+}
+
+.roster-block-class-image-preview {
+  img {
+    margin-left: -30px;
+    margin-top: -5px;
+  }
+
+  &.barbarian img {
+    margin-top: 5px;
+    margin-left: -20px;
+  }
+
+  &.ranger img {
+    margin-left: -15px;
+  }
+}
+
+.roster-block-exp-bar {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 26px;
+  height: 4px;
+  position: absolute;
+  top: 26px;
+
+  .progress-bar {
+    float: none;
+    background-color: purple;
+  }
+}
+
+.roster-block-equipment {
+  position: absolute;
+  bottom: 0px;
+  left: 110px;
+
+  .item-thumb-wrapper {
+    float: none;
+
+    ul {
+      padding-left: 0;
+    }
+  }
+}
+
+.tooltiptext {
+  display: none;
+}
+
+.roster-block-actions {
+  position: absolute;
+  bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  left: auto;
+  right: 0;
+}
+
+.combat-notice {
+  position: absolute;
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  z-index: 2;
+
+  &.combat-notice-damage {
+    background: #D9534F;
+    color: white;
+    left: 57%;
+    top: 30px;
+  }
+
+  &.combat-notice-dodge {
+    background: yellow;
+    left: 50%;
+    top: 28px;
+    z-index: 3;
+  }
+
+  &.combat-notice-special {
+    background: orange;
+    left: 100px;
+    top: 28px;
+    width: auto;
+    padding: 0 10px 0;
+    border-radius: 4px;
+    z-index: 4;
+  }
+
+  &.combat-notice-effect {
+    width: auto;
+    color: white;
+    line-height: 1.4;
+    height: auto;
+    background: black;
+    padding: 0 4px;
+    border-radius: 4px;
+    bottom: 14px;
+    left: 50%;
+    z-index: 4;
+  }
+
+  &.combat-notice-heal {
+    background-color: #56B956;
+    color: white;
+    left: 30%;
+    top: 30px;
+  }
+}
+
+.roster-block-dead-notice {
+  position: absolute;
+  top: 10px;
+  left: 22px;
+  color: red;
+  background-color: black;
+  padding: 5px 7px;
+  opacity: 0.75;
+  border-radius: 4px;
+}
+
+.roster-block-quest-notice {
+  position: absolute;
+  top: 10px;
+  left: 22px;
+  color: white;
+  background-color: black;
+  padding: 5px 7px;
+  opacity: 0.75;
+  border-radius: 4px;
+}
+
+.roster-hero-tab-column {
+  float: left;
+  width: 15%;
+}
+
+.roster-hero-detail-column {
+  float: left;
+  width: 85%;
+}
+
+@media(max-width: 768px) {
+  .roster-hero-tab-column,
+  .roster-hero-detail-column {
+    float: none;
+    width: auto;
+  }
+
+  .roster-hero-tab-column {
+    display: none;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    z-index: 3;
+    background-color: #122722;
+
+    &.js-show {
+      display: block;
+      min-width: 280px;
+    }
+  }
+}

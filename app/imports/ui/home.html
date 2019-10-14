@@ -1,0 +1,82 @@
+<template name="home">
+  <div class="container-fluid">
+    {{> loginButtons}}
+
+    {{#if loggedIn}}
+      <a href="/play" style="margin-top: 10px" class="pull-right btn-lg btn btn-success">Play</a>
+    {{/if}}
+
+    <h1>HERO MANAGER</h1>
+
+      <ul class="nav nav-tabs">
+        {{> homeTab name="Home"          id=1 class=(tabClass 1)}}
+        {{> homeTab name="Feedback"      id=2 class=(tabClass 2)}}
+        {{> homeTab name="Release notes" id=3 class=(tabClass 3)}}
+        {{> homeTab name="FAQ"           id=4 class=(tabClass 4)}}
+        {{> homeTab name="Credits"       id=5 class=(tabClass 5)}}
+      </ul>
+
+      {{#if isActiveTab 1}}
+        <div class="alert alert-info" role="alert">
+          <strong>Here be dragons</strong>
+          <p>Hero manager is currently in an alpha status, so you might see some weird behaviour.</p>
+          <p>Development is an ongoing process and what you see here is by no means a finished product.</p>
+          <p>We aim to release updates every two weeks, so if you have any feedback or suggestions, let us know in the feedback section and we will try and make it happen!</p>
+        </div>
+        <div class="h4 text-center">
+          <p>Hero manager puts you in charge of a company that will take on any quest, for a price!</p>
+          <br>
+          <p>The economic climate is dark and the enemies are dangerous, but manage your gold shrewdly and you could see a return on your investment.</p>
+          <br>
+
+        </div>
+
+        <div class="text-center">
+        {{#if loggedIn}}
+          <a href="/play" class="btn-lg btn btn-success">Play</a>
+        {{else}}
+          <p>Create an account to start your adventure.</p>
+          {{>[login-signup]}}
+        {{/if}}
+        </div>
+      {{/if}}
+
+      {{#if isActiveTab 2}}
+        {{> feedback}}
+      {{/if}}
+
+      {{#if isActiveTab 3}}
+        <h2>v2.6.0</h2>
+        <ul>
+          <li>Your game can now be restarted using a new menu option</li>
+          <li>Tuned monster difficulty, monsters should take longer to kill, but not hit as hard.</li>
+          <li>Heroes will periodically take annual leave.</li>
+          <li>Unfortunate events will occasionally happen to heroes whilst they are questing.</li>
+        </ul>
+      {{/if}}
+
+      {{#if isActiveTab 4}}
+        <p>Coming soon.</p>
+      {{/if}}
+
+      {{#if isActiveTab 5}}
+        <p><strong>Artwork</strong></p>
+        <ul>
+          <li>Character & environment - <a href="http://poshrolls.co.uk/">Posh Rolls</a></li>
+          <li>Interface - <a href="https://www.facebook.com/RavenmoreArt/">Ravenmore</a></li>
+        </ul>
+      {{/if}}
+
+    <div class="sticky-push"></div>
+  </div>
+
+  <div class="copyright" style="margin-top: -20px">
+    <div class="text-center"><a style="color: black" href="https://www.gravitywell.co.uk/">© Gravitywell 2016</a></div>
+  </div>
+</template>
+
+<template name="homeTab">
+  <li role="presentation" class="{{class}}">
+    <a on-click='changeTab:5'>{{name}}</a>
+  </li>
+</template>

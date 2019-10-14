@@ -1,0 +1,12 @@
+<template name='quests/overview'>
+  {{#if activeQuests}}
+    <div class="active-quests-wrapper">
+      {{#each activeQuests}}
+        <div class="active-quest-preview">
+          <p class="panel-title">{{name}}</p>
+          {{>[x-component-progress] color='blue' progress=battleProgress}}
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+</template>

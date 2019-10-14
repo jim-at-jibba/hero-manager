@@ -1,0 +1,47 @@
+<template name='quests/battle'>
+  {{#with quest}}
+    {{>[x-component-header] text=name}}
+
+    <div class="x-component-panel">
+      <button class="btn btn-default go-back">Back</button>
+
+      <div style="padding: 15px 0;">
+        {{>[x-component-progress] color='blue' progress=battleProgress}}
+      </div>
+
+      {{#with battle}}
+        <div class="quest-battle zone-{{questZone}}">
+          <div class="row">
+            <div class="col-md-6">
+              {{#each questParty battle}}
+                {{#with getMerc (this)}}
+                  <div class="battle-wrapper {{activeClass battle}}">
+                    {{#[hero-battle]}}
+                      {{#each combatNotices battle}}
+                        <div class="combat-notice combat-notice-{{type}}">{{value}}</div>
+                      {{/each}}
+                    {{/[hero-battle]}}
+                  </div>
+                {{/with}}
+              {{/each}}
+            </div>
+
+            <div class="col-md-6">
+              <div class="pull-right">
+                  {{#each monsterParty battle}}
+                    <div class="battle-wrapper monster-wrapper {{activeClass battle}}">
+                      {{#[hero-battle]}}
+                        {{#each combatNotices battle}}
+                          <div class="combat-notice combat-notice-{{type}}">{{value}}</div>
+                        {{/each}}
+                      {{/[hero-battle]}}
+                    </div>
+                  {{/each}}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/with}}
+    </div>
+  {{/with}}
+</template>

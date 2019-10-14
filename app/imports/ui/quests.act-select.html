@@ -1,0 +1,28 @@
+<template name='quests/act-select'>
+  <div class="act-select-wrapper">
+    {{>[x-component-header] text="Act Select"}}
+    <div class="x-component-panel">
+      <div id="act-select" class="act-select">
+        <div class="item act-1-select {{activeClass 1}}" data-act-id="1">
+          <div class="caption">
+            <h3>Act I</h3>
+          </div>
+        </div>
+
+        <div class="item act-2-select {{activeClass 2}}" data-act-id="2">
+          <div class="caption">
+            <h3>Act II</h3>
+          </div>
+        </div>
+
+        <div class="item act-3-select {{activeClass 3}}" data-act-id="3">
+          <div class="caption">
+            <h3>Act III</h3>
+          </div>
+        </div>
+        {{#with currentSlide}}
+        {{/with}}
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,86 @@
+<template name='quests.partyselect'>
+  {{>[x-component-header] text="Select your party"}}
+
+  <div class="x-component-panel">
+    <div style="padding-top: 10px">
+      <button class="back btn btn-default pull-right">Back</button>
+    </div>
+
+    {{#with loadQuest}}
+    <div class="row">
+      <div class="col-md-9">
+      <h2>{{name}}</h2>
+      </div>
+
+      <div class="col-md-3">
+        <table class="table table-bordered quest-summary">
+          <tr>
+            <td>Zone:</td>
+            <td>{{zone.name}}</td>
+          </tr>
+          <tr>
+            <td>Reward:</td>
+            <td>{{reward}}g</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    {{/with}}
+    <input value="{{searchVal}}" type="text" placeholder="Search" id="roster-search">
+
+    {{#if partySelected}}
+      <button class="btn btn-default pull-right startquest">Start Quest</button>
+    {{else}}
+      <button class="btn btn-default pull-right disabled">Start Quest</button>
+    {{/if}}
+
+    <div class="roster-overview">
+      <div class="row">
+        <div class="col-md-4">
+          {{#each search roster}}
+            {{#unless temporary}}
+              {{#[hero-preview]}}
+                {{#if isSelected}}
+                  <div class="chosen-for-quest">
+                    <span class="glyphicon glyphicon-ok"></span>
+                  </div>
+                {{/if}}
+              {{/[hero-preview]}}
+            {{/unless}}
+          {{/each}}
+        </div>
+
+        <div class="col-md-8">
+          {{#each roster}}
+            {{#if isSelected}}
+              {{#[hero-detail]}}
+                {{#if activeQuest}}
+                    Out adventuring.
+                {{else}}
+                  {{#if noHealth health}}
+                  <button class="revive btn btn-default btn-danger" data-toggle="tooltip" title="Revive this hero for {{reviveCost}}g">
+                    <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+                    <span class="sr-only">revive ({{reviveCost}}g)</span>
+                  </button>
+                  {{/if}}
+                  {{#if alive}}
+                    {{#if needsHeal}}
+                    <button class="heal btn btn-default" data-toggle="tooltip" title="Heal this hero for {{healCost}}g">
+                      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                      <span class="sr-only">heal ({{healCost}}g)</span>
+                    </button>
+                    {{/if}}
+                    <button class="select-hero btn btn-default">
+                      Remove from party
+                    </button>
+                  {{/if}}
+                {{/if}}
+              {{/[hero-detail]}}
+            {{/if}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</template>

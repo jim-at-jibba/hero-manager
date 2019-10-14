@@ -1,0 +1,28 @@
+<template name="login-signup">
+  <form style="max-width: 300px; margin: 0 auto;">
+    <div class="form-group">
+      <input type="text" class="form-control" id="input-username" placeholder="Username">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" id="input-password-1" placeholder="Password">
+    </div>
+    {{#if error}}
+      <p class="text-danger">{{error}}</p>
+    {{/if}}
+    {{#if create}}
+    <div class="form-group">
+      <input type="password" class="form-control" id="input-password-2" placeholder="Password (again)">
+    </div>
+    {{/if}}
+    <div class="clearfix">
+      <button style="width: 100%" type="submit" class="btn btn-default">Get started!</button>
+    </div>
+    <a href="#" class="login-signup-toggle pull-right">
+      {{#if create}}
+      Sign in
+      {{else}}
+      Create account
+      {{/if}}
+    </a>
+  </form>
+</template>

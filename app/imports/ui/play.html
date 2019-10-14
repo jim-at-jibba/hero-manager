@@ -1,0 +1,77 @@
+<template name="play">
+  <div class="container-fluid" id="container">
+    {{#if loading}}
+      <div class='drip'></div>
+      <h3 class="text-center loading-text">Loading</h3>
+    {{else}}
+      {{> loginButtons}}
+
+      {{#if loggedIn}}
+
+        {{> [map/overview]}}
+        {{>chat}}
+
+        {{> [quests/overview]}}
+
+        {{#if isActiveTab 8}}
+          <div class="tab-modal-overlay">
+            {{> [settings]}}
+          </div>
+        {{/if}}
+
+        {{#if isActiveTab 9}}
+          <div class="tab-modal-overlay">
+            {{> [quests/act-select]}}
+          </div>
+        {{/if}}
+
+        {{#if selectedQuest}}
+          <div class="tab-modal-overlay">
+            {{> [quests.partyselect]}}
+          </div>
+        {{/if}}
+
+        {{#if viewQuest}}
+          <div class="tab-modal-overlay">
+            {{> [quests/battle]}}
+          </div>
+        {{/if}}
+
+        {{#if isActiveTab 3}}
+          <div class="tab-modal-overlay">
+            {{> [hire/overview]}}
+          </div>
+        {{/if}}
+
+
+        {{#if isActiveTab 5}}
+          <div class="tab-modal-overlay">
+            {{> [stronghold/overview]}}
+          </div>
+        {{/if}}
+
+        {{#if isActiveTab 6}}
+          <div class="tab-modal-overlay">
+            {{> [leaderboard/overview]}}
+          </div>
+        {{/if}}
+
+        <div class="map-zoom-controls">
+          <button class="btn btn-default map-zoom-in">+</button>
+          <button class="btn btn-default map-zoom-out">-</button>
+        </div>
+
+      {{else}}
+        <p>Please log in or create an account.</p>
+      {{/if}}
+
+    {{/if}}
+
+    <div class="sticky-push"></div>
+  </div>
+
+  <div class="footer" style="">v2.6.0</div>
+  <div class="copyright" style="margin-top: -20px">
+    <div class="text-center"><a style="color: black" href="https://www.gravitywell.co.uk/">© Gravitywell 2016</a></div>
+  </div>
+</template>

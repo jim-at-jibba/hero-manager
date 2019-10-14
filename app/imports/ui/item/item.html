@@ -1,0 +1,25 @@
+<template name='item'>
+<div class="item-thumb item-quality-{{quality}} {{equippedClass}}" data-item-type="{{type}}" data-item-id="{{id}}" style="background-image: url({{itemImg}});">
+  </div>
+  <div class="tooltiptext">
+    <div class="item-card item-quality-{{quality}}">
+      <h6 class="item-quality-text-{{quality}}">{{name}}</h6>
+      <p class="item-quality-text-{{quality}}">{{qualityType}} {{equipmentType}}</p>
+      <img src="{{itemImg}}" />
+      {{#if isEquipment}}
+      <ul>
+        {{#if minMax}}
+        <li>+{{min}}-{{max}} Damage</li>
+        {{/if}}
+        {{#each equipmentDescription}}
+          <li>{{.}}</li>
+        {{/each}}
+      </ul>
+      {{else}}
+        <p>{{meta.description}}</p>
+        <p><em>{{meta.flavour}}</em></p>
+      {{/if}}
+
+    </div>
+  </div>
+</template>

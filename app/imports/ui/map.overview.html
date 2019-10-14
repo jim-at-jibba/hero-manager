@@ -1,0 +1,111 @@
+<template name="map/overview">
+  {{#if isLocalHost}}
+  <button on-click="restart" class="btn btn-default clear-storage">Restart</button>
+  {{/if}}
+
+  <h3 class="gold-total" style="color: gold;">Gold: {{goldTotal}}</h3>
+  <ul class="toolbar">
+    <li role="presentation">
+      <a href="#" class="toolbar-leaderboard">
+        <span class="glyphicon glyphicon-sort-by-order"></span>
+        <span class="sr-only">Leaderboard</span>
+      </a>
+    </li>
+
+    <li role="presentation">
+      <a href="#" class="toolbar-chat-window">
+        <span class="glyphicon glyphicon-comment"></span>
+        <span class="sr-only">Chat window</span>
+      </a>
+    </li>
+
+    <li role="presentation">
+      <a href="#" class="toolbar-act-select">
+        <span class="glyphicon glyphicon-globe"></span>
+        <span class="sr-only">Act select</span>
+      </a>
+    </li>
+
+    <li role="presentation">
+      <a href="#" class="toolbar-stronghold">
+        <span class="glyphicon glyphicon-tower"></span>
+        <span class="sr-only">Stronghold</span>
+      </a>
+    </li>
+
+    <li role="presentation">
+      <a href="#" class="toolbar-tavern">
+        <img src="/world/dead-dog-tavern.png">
+        <span class="sr-only">Tavern</span>
+      </a>
+    </li>
+
+    <li role="presentation">
+      <a href="#" class="toolbar-settings">
+        <span class="glyphicon glyphicon-cog"></span>
+        <span class="sr-only">Settings</span>
+      </a>
+    </li>
+
+    <li role="presentation">
+      {{#if isFullScreen}}
+        <a href="#" class="toolbar-fullscreen">
+          <span class="glyphicon glyphicon-resize-small"></span>
+          <span class="sr-only">Enter Fullscreen</span>
+        </a>
+      {{else}}
+        <a href="#" class="toolbar-fullscreen">
+          <span class="glyphicon glyphicon-resize-full"></span>
+          <span class="sr-only">Exit Fullscreen</span>
+        </a>
+      {{/if}}
+    </li>
+  </ul>
+
+  <div class="map-container">
+    <div class="map-drag-wrapper" draggable="true" style="
+      width: {{mapWidth}}px;
+      height: {{mapHeight}}px;
+      transform: translate({{startX}}px, {{startY}}px);
+      ">
+      <img style="
+      width: {{mapWidth}}px;
+      height: {{mapHeight}}px;
+      " src="{{mapSrc}}">
+      {{#each quests}}
+        {{#if isSelected}}
+          <div style="left:{{coordsX}}%; top: {{coordsY}}%;" class="map-popover">
+            <div class="pull-right"><em>{{zone.name}}</em></div>
+            <p class="h5">{{name}}</p>
+            <span>{{reward}}g</span>
+            {{#if questIsActive}}
+              <div>Quest is in progress</div>
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: {{battleProgress}}%;">
+                  <span class="sr-only">{{battleProgress}}% Complete</span>
+                </div>
+              </div>
+              <button class="btn btn-default pull-right view-battle">Observe</button>
+            {{else}}
+              <button class="btn btn-default pull-right start-quest">Start</button>
+            {{/if}}
+            <div class="map-popover-triangle"></div>
+          </div>
+        {{/if}}
+        <div style="left:{{coordsX}}%; top: {{coordsY}}%;" class="map-quest-marker-wrapper">
+          <div class="map-quest-marker"></div>
+        </div>
+      {{/each}}
+
+      {{#with stronghold}}
+      <div style="left:{{coords.x}}%; top: {{coords.y}}%;" class="map-location-marker-wrapper stronghold">
+        <span class="glyphicon glyphicon-tower map-location-marker"></span>
+      </div>
+      {{/with}}
+
+      <div style="left:55%; top: 39%;" class="map-location-marker-wrapper tavern">
+        <img src="/world/dead-dog-tavern.png">
+      </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,64 @@
+<template name="hero-detail">
+  <div class="x-component-container detail-card" data-hero-id="{{id}}">
+    <div class="detail-card-inner-wrapper">
+    <div class="detail-card-key-info clearfix">
+      <div class="row">
+        <div class="col-sm-12 col-xs-6">
+          <div class="detail-card-equipment pull-left">
+            {{#each equipment}}
+                {{>item}}
+            {{/each}}
+            {{{equipmentPlaceholder}}}
+          </div>
+
+          <div class="detail-card-img pull-left">
+            <img src="{{classImage}}">
+          </div>
+
+          {{#if unavailable}}
+            <div class="hero-unavailable">
+              <span class="h3">{{availableReason}}</span><br>
+              <span>Returns to work {{timeTillAvailable}}</span>
+            </div>
+          {{/if}}
+        </div>
+
+        <div class="col-sm-12 col-xs-6">
+          <div class="text pull-left">
+            <h2>{{name}}</h2>
+
+            <div class="detail-card-divider"></div>
+
+            <p>Level: {{level}}</p>
+
+            <p>Power: {{power}}</p>
+
+            <p>Health: {{health}}/{{maxHealth}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-card-body">
+      <h4>Abilities:</h4>
+      <p><strong>{{primaryAbility}}</strong><br>{{abilityDescription primaryAbility}}</p>
+      {{#if passives}}
+        <div class="detail-card-divider"></div>
+        <h4>Passives:</h4>
+        {{#each passives}}
+          {{#with fullPassive (this)}}
+          <p><strong>{{..}}</strong>
+          <span class="label txt-shdw class-token class-{{toLower class}}">{{class}}</span>
+          <br>{{description}}</p>
+          {{/with}}
+        {{/each}}
+      {{/if}}
+
+      <div class="roster-block-actions">
+        {{> UI.contentBlock}}
+      </div>
+
+    </div>
+  </div>
+  </div>
+</template>

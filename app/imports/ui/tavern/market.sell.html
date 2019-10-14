@@ -1,0 +1,87 @@
+<template name='market/sell'>
+  <div>
+    <button class="close-sell-window btn btn-default pull-right">Back</button>
+  </div>
+
+  {{#if selectedMerc}}
+    {{#with getSelectedMerc}}
+      <p>Pick a price.</p>
+      <table class="table roster-overview">
+        <thead>
+        <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Power</th>
+        <th>Health</th>
+        <th></th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              {{#if classImage}}
+              <div class="class-image-preview {{classImageStyle}}">
+                <img src="{{classImage}}">
+              </div>
+              {{/if}}
+            </td>
+            <td>{{name}}</td>
+            <td>
+              {{#each getClass (this)}}
+                <span class="label txt-shdw class-token class-{{toLower this}}">{{this}}</span>
+              {{/each}}
+            </td>
+            <td>{{power}}</td>
+            <td>{{health}}/{{maxHealth}}</td>
+            <td>
+              <div class="input-group" style="max-width: 140px;">
+                <input type="number" class="form-control" id="sell-price" placeholder="Amount">
+                <div class="input-group-addon">g</div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button class="btn btn-default sell-confirm">Confirm</button>
+    {{/with}}
+  {{else}}
+    <div class="roster-overview">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="x-component-container" style="margin-bottom: 15px">
+            <input value="{{searchVal}}" style="width: 100%; color: black" type="text" placeholder="Search" id="roster-search">
+          </div>
+          {{#each roster}}
+            {{#unless temporary}}
+              {{>[hero-preview]}}
+            {{/unless}}
+          {{/each}}
+        </div>
+
+        <div class="col-md-8">
+          {{#if mercDetail}}
+            {{#with mercDetail}}
+              {{#[hero-detail]}}
+                {{#if noHealth health}}
+                  <button disabled class="btn btn-default btn-danger">dead</button>
+                {{else}}
+                  {{#if activeQuest}}
+                      Out adventuring.
+                  {{else}}
+                    {{#if isSelected}}
+                    <button class="selectMerc btn btn-default btn-success">Select</button>
+                    {{else}}
+                    <button class="selectMerc btn btn-default">Select</button>
+                    {{/if}}
+                  {{/if}}
+                {{/if}}
+              {{/[hero-detail]}}
+            {{/with}}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+</template>

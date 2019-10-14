@@ -1,0 +1,24 @@
+<template name="hero-tab">
+  <div class="x-component-container roster-block hero-tab">
+    <div class="roster-block-class-image-preview {{classImageStyle}}">
+    {{#if classImage}}
+      <img src="{{classImage}}">
+    {{/if}}
+    </div>
+
+    <div class="roster-block-level">
+      <strong><span class="stat-label">Lvl.</span> <span class="stat-value">{{level}}</span></strong>
+      <span class="hidden">({{exp}}/{{expThisLevel}})</span>
+    </div>
+
+    <div class="roster-tab-name visible-xs">
+      <span>{{name}}</span>
+    </div>
+
+    {{#if isDead}}
+      <span class="roster-block-dead-notice h4">Dead</span>
+    {{/if}}
+
+    {{> UI.contentBlock}}
+  </div>
+</template>

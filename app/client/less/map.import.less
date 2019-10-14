@@ -1,0 +1,123 @@
+.map-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background-color: grey;
+}
+
+.map-location-marker-wrapper {
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+  border: 2px solid black;
+
+  &.tavern {
+    width: 39px;
+    height: 39px;
+    padding: 4px;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
+
+.map-location-marker {
+  width: 15px;
+  height: 15px;
+  display: block;
+  font-size: 15px;
+}
+
+.map-quest-marker-wrapper {
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.map-popover {
+  position: absolute;
+  width: 200px;
+  background-color: white;
+  transform: translateX(-50%) translateY(-120%);
+  padding: 10px;
+  z-index: 1;
+}
+
+.map-popover-triangle {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -8px;
+}
+
+.gold-total {
+  position: absolute;
+  z-index: 99;
+  top: -12px;
+  left: 5px;
+}
+
+.map-quest-marker {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: red;
+  animation-name: greenPulse;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.marker-warning {
+  animation-name: orangePulse;
+}
+
+.marker-danger {
+  animation-name: redPulse;
+}
+
+@keyframes greenPulse {
+  from { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
+  50% { background-color: #91bd09; -webkit-box-shadow: 0 0 18px #91bd09; }
+  to { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
+}
+
+@keyframes orangePulse {
+  from { background-color: #FF6600; -webkit-box-shadow: 0 0 9px #333; }
+  50% { background-color: #FFAA00; -webkit-box-shadow: 0 0 18px #FFAA00; }
+  to { background-color: #FF6600; -webkit-box-shadow: 0 0 9px #333; }
+}
+
+@keyframes redPulse {
+  from { background-color: #FF0000; -webkit-box-shadow: 0 0 9px #333; }
+  50% { background-color: #FF3300; -webkit-box-shadow: 0 0 18px #FF3300; }
+  to { background-color: #FF0000; -webkit-box-shadow: 0 0 9px #333; }
+}
+
+.map-zoom-controls {
+  z-index: 1;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+
+  button {
+    width: 40px;
+    display: block;
+
+    &:first-child {
+      margin-bottom: 5px;
+    }
+  }
+}

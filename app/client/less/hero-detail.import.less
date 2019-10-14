@@ -1,0 +1,78 @@
+// Detail card
+.detail-card {
+  padding: 8px;
+  position: relative;
+  border-radius: 5px;
+  background-image: linear-gradient(to right, #d4af8c, #f0d8bf);
+  color: black;
+  padding-bottom: 50px;
+
+  .roster-block-actions {
+    bottom: 15px;
+  }
+}
+
+.hero-unavailable {
+  position: absolute;
+  top: 10px;
+  right: 22px;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 5px 7px;
+  opacity: 0.75;
+  border-radius: 4px;
+}
+
+.detail-card > div {
+  padding: 4px 8px;
+}
+
+.detail-card > div:last-child {
+  margin-bottom: 0;
+}
+
+.detail-card .detail-card-key-info {
+  font-size: 18px;
+  position: relative;
+  min-height: 160px;
+}
+
+.detail-card-key-info .detail-card-img {
+}
+
+.detail-card-divider {
+  border-bottom: 1px solid black;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.detail-card-equipment {
+  min-width: 50px;
+  min-height: 110px;
+
+  .item-thumb-placeholder,
+  .item-thumb {
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+}
+
+@media(max-width: 768px) {
+  .detail-card {
+    h2,
+    h4 {
+      font-size: 16px;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .detail-card-key-info {
+      font-size: 14px;
+      min-height: auto;
+    }
+
+    .detail-card-img {
+      position: absolute;
+    }
+  }
+}

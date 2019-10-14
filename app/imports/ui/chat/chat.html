@@ -1,0 +1,19 @@
+<template name="chat">
+  <div class="chat-window">
+    <span class="users-online">{{online}}</span>
+    <ul>
+    {{#each list}}
+      <li>
+        {{#if isChat}}
+          <span class="chat">[{{username}}] says: {{message}}</span>
+        {{else}}
+          <span class="notice notice-{{type}}">{{{message}}}</span>
+        {{/if}}
+      </li>
+    {{/each}}
+    </ul>
+    <form>
+      <input type="text" placeholder="Type a message">
+    </form>
+  </div>
+</template>

@@ -1,0 +1,47 @@
+.hero-tab {
+  cursor: pointer;
+
+  .roster-block-class-image-preview {
+    margin-left: -15px;
+  }
+
+  .roster-block-level {
+    left: 8px;
+    bottom: 5px;
+    top: auto;
+  }
+}
+
+@media(max-width: 768px) {
+  .hero-tab {
+    height: 40px;
+    border: 1px solid white;
+    margin-bottom: -1px !important;
+
+    .roster-tab-name {
+      position: absolute;
+      left: 50px;
+      top: 1px;
+    }
+
+    .roster-block-class-image-preview img {
+      margin-left: -45px;
+      margin-top: -15px;
+    }
+
+    .roster-block-level {
+      left: 50px !important;
+      bottom: 0;
+    }
+    &:after,
+    &:before {
+      background: none;
+    }
+
+    &:hover {
+      &:after {
+        background: rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+}

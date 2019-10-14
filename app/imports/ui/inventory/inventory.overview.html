@@ -1,0 +1,13 @@
+<template name='inventory/overview'>
+  <p>Equip a hero with an item by dragging it onto them.</p>
+  <div class="clearfix" id="inventory-grid" style="min-height:100px">
+    {{#each inventory}}
+      <div class="item-thumb-wrapper" data-item-id="{{id}}">
+        {{>item}}
+      </div>
+    {{/each}}
+  </div>
+  <div class="x-component-container noselect" id="inventory-sell">
+    <p class="h4 text-center">Drag items here to sell them</p>
+  </div>
+</template>
