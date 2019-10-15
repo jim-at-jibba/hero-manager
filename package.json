@@ -15,9 +15,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://lbuzzo@bitbucket.org/gravitywell_ltd/hero-manager-2016.git"
+    "url": "https://github.com/GravitywellUK/hero-manager"
   },
-  "author": "",
+  "author": "Gravitywell <hello@gravitywell.co.uk>",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.6.5",
