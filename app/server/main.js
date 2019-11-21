@@ -1,24 +1,23 @@
-import {Meteor} from 'meteor/meteor';
-import {Kadira} from 'meteor/meteorhacks:kadira';
-const Fiber = Npm.require('fibers');
+import { Meteor } from "meteor/meteor";
+const Fiber = Npm.require("fibers");
 
-import {Bursar} from 'meteor/game:bursar';
-import {Heroes} from 'meteor/game:heroes';
-import {HeroesCollection} from 'meteor/game:heroes';
-import {Quests} from 'meteor/game:quests';
-import {QuestsCollection} from 'meteor/game:quests';
-import {Combat} from 'meteor/game:combat';
-import {Battles} from 'meteor/game:combat';
-import {Hires} from 'meteor/game:hire';
-import {HiresCollection} from 'meteor/game:hire';
-import {Notifications} from 'meteor/game:notifications';
-import {NotificationsCollection} from 'meteor/game:notifications';
-import {Inventory} from 'meteor/game:items';
-import {InventoryCollection} from 'meteor/game:items';
-import {Stronghold} from 'meteor/game:stronghold';
-import {Settings} from 'meteor/game:settings';
-import 'meteor/game:market';
-import 'meteor/game:chat';
+import { Bursar } from "meteor/game:bursar";
+import { Heroes } from "meteor/game:heroes";
+import { HeroesCollection } from "meteor/game:heroes";
+import { Quests } from "meteor/game:quests";
+import { QuestsCollection } from "meteor/game:quests";
+import { Combat } from "meteor/game:combat";
+import { Battles } from "meteor/game:combat";
+import { Hires } from "meteor/game:hire";
+import { HiresCollection } from "meteor/game:hire";
+import { Notifications } from "meteor/game:notifications";
+import { NotificationsCollection } from "meteor/game:notifications";
+import { Inventory } from "meteor/game:items";
+import { InventoryCollection } from "meteor/game:items";
+import { Stronghold } from "meteor/game:stronghold";
+import { Settings } from "meteor/game:settings";
+import "meteor/game:market";
+import "meteor/game:chat";
 
 const tick = () => {
   Fiber(function() {
@@ -29,8 +28,6 @@ const tick = () => {
     Heroes.step();
   }).run();
 };
-
-Kadira.connect('mxCF5w7mQAzzEoajv', 'c3a8f37f-068a-4c92-8bf9-2d88251545b9');
 
 Meteor.startup(() => {
   setInterval(() => tick(), Settings.stepInterval);
@@ -45,12 +42,12 @@ Meteor.startup(() => {
   Battles._ensureIndex({ userId: 1 });
 });
 
-Meteor.publish('userData', function () {
-  return Meteor.users.find({}, {fields: {username: 1}});
+Meteor.publish("userData", function() {
+  return Meteor.users.find({}, { fields: { username: 1 } });
 });
 
 Meteor.methods({
-  'game.init': function() {
+  "game.init": function() {
     Bursar.init(this.userId);
     Combat.init(this.userId);
     Hires.init(this.userId);
@@ -58,7 +55,7 @@ Meteor.methods({
     Quests.init(this.userId);
     Stronghold.init(this.userId);
   },
-  'game.reset': function() {
+  "game.reset": function() {
     Bursar.clear(this.userId);
     Combat.clear(this.userId);
     Heroes.clear(this.userId);
@@ -67,7 +64,7 @@ Meteor.methods({
     Quests.clear(this.userId);
     Stronghold.clear(this.userId);
   },
-  'game.restart': function() {
+  "game.restart": function() {
     const uid = this.userId;
     Bursar.clear(uid, () => {
       Bursar.init(uid);
@@ -88,5 +85,5 @@ Meteor.methods({
     Stronghold.clear(uid, () => {
       Stronghold.init(uid);
     });
-  },
+  }
 });
